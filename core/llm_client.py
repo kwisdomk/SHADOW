@@ -475,3 +475,5 @@ class ShadowLLMClient:
                 },
                 "confidence": 0.99
             }
+
+# Hybrid Mode: OSINT Precheck Integrated

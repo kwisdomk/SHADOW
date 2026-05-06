@@ -101,3 +101,5 @@ class ShadowPipeline:
         state.action_data = self._safe_agent_run("ActionAgent", sys_action, user_action, state, action_fb)
         
         return state
+
+# Hybrid Flow: OSINT -> LLM Fallback Evaluated

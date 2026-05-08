@@ -29,7 +29,7 @@ class ShadowLLMClient:
         self.model = os.getenv("SHADOW_MODEL", "qwen-2.5-7b")
         self.api_key = os.getenv("SHADOW_API_KEY", "dummy-key-for-mock")
         self.timeout = float(os.getenv("SHADOW_TIMEOUT", "30.0"))
-        self.mock_mode = os.getenv("SHADOW_MOCK_MODE", "false").lower() == "true"
+        self.mock_mode = os.getenv("SHADOW_MOCK_MODE", "true").lower() == "true"
         
         if OpenAI is None:
             logger.warning("openai package not found. Forcing MOCK MODE.")

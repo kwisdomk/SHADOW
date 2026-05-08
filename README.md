@@ -1,3 +1,14 @@
+---
+title: SHADOW Kenyan Fraud Intelligence
+emoji: 🛡️
+colorFrom: red
+colorTo: gray
+sdk: streamlit
+sdk_version: 1.35.0
+app_file: app.py
+pinned: false
+---
+
 # SHADOW — Kenyan Fraud Intelligence System
 
 > AMD Developer Hackathon 2026 · Agentic AI Track

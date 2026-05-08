@@ -31,6 +31,10 @@ class ShadowLLMClient:
         self.timeout = float(os.getenv("SHADOW_TIMEOUT", "30.0"))
         self.mock_mode = os.getenv("SHADOW_MOCK_MODE", "false").lower() == "true"
         
+        if OpenAI is None:
+            logger.warning("openai package not found. Forcing MOCK MODE.")
+            self.mock_mode = True
+
         if not self.mock_mode:
             self.client = OpenAI(
                 api_key=self.api_key,

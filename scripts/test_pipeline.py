@@ -41,7 +41,9 @@ def run_tests():
         print(f"PreCheck Result: [{precheck_risk}] {precheck_category}")
         print(f"Final Verdict: {verdict}")
         print(f"Risk Level: {risk_level}")
-        print("Execution Log:")
+        print("\nExecution Timeline:")
+        print(state.formatted_trace)
+        print("\nExecution Log:")
         for log in state.execution_log:
             print(f"  - {log}")
         print("-" * 40)

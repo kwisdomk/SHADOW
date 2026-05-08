@@ -1,8 +1,10 @@
 # SHADOW — Kenyan Fraud Intelligence System
 
+> AMD Developer Hackathon 2026 · Agentic AI Track
+
 ## Project Overview
 
-Shadow is an advanced OSINT + LLM Hybrid Agentic Pipeline designed specifically to detect, analyze, and neutralize Kenyan-specific mobile fraud vectors. Built as a proof-of-concept for the AMD Developer Hackathon, the system mitigates the impact of localized scams such as M-Pesa reversal fraud, Fuliza exploitation, KRA impersonation, and betting-related phishing.
+Shadow is an advanced OSINT + LLM Hybrid Agentic Pipeline designed specifically to detect, analyze, and neutralize Kenyan-specific mobile fraud vectors. The system mitigates the impact of localized scams such as M-Pesa reversal fraud, Fuliza exploitation, KRA impersonation, and betting-related phishing.
 
 Shadow solves the "Data Cold Start" problem by employing a hybrid architecture: it merges deterministic Open Source Intelligence (OSINT) with an explainable, multi-agent Large Language Model (LLM) pipeline. This ensures highly accurate classification, context-aware reasoning, and actionable mitigation strategies tailored to the Kenyan demographic, including support for English, Swahili, and Sheng dialects.
 
@@ -41,6 +43,15 @@ Shadow solves the "Data Cold Start" problem by employing a hybrid architecture: 
            │
            ▼
 [ Explainable JSON Output & Execution Log ]
+           │
+           ▼
+┌──────────────────────────┐
+│  Streamlit Live Dashboard│
+│  (app/main.py)           │
+│  - Real-time Analysis UI │
+│  - Execution Timeline    │
+│  - Risk Scoring Display  │
+└──────────────────────────┘
 ```
 
 ## Agent Pipeline Flow
@@ -57,28 +68,46 @@ Shadow solves the "Data Cold Start" problem by employing a hybrid architecture: 
 - **Sheng + Swahili Language Detection**: Seamlessly processes colloquialisms and mixed-language SMS typical in East Africa.
 - **OSINT-Driven Classification**: Fuses known deterministic scam indicators with probabilistic AI reasoning.
 - **Explainable AI Logs (`execution_log`)**: Glass-box observability that documents the exact reasoning step-by-step for full transparency.
+- **Streamlit Live Dashboard**: Interactive real-time web UI for threat analysis and execution timeline visualization.
 - **AMD Hardware Optimized**: Built to run on the AMD Developer Cloud utilizing vLLM and Qwen models, with a robust fallback mock mode for deterministic demos.
+
+## Quick Start
+
+```bash
+pip install -r requirements.txt
+streamlit run app/main.py
+```
 
 ## How to Run
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Install Dependencies
 
-2. Configure Environment:
-   ```bash
-   # Copy the example environment file and add your AMD Cloud API key if not using Mock Mode
-   cp .env.example .env
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-3. Run the Pipeline Smoke Tests:
-   ```bash
-   python scripts/test_pipeline.py
-   ```
+### 2. Configure Environment
+
+```bash
+# Copy the example environment file and add your AMD Cloud API key (optional — mock mode works without it)
+cp .env.example .env
+```
+
+### 3. Launch the Streamlit Dashboard (Primary Interface)
+
+```bash
+streamlit run app/main.py
+```
+
+The dashboard runs at `http://localhost:8501` and provides a full interactive UI for submitting messages, viewing risk scores, agent reasoning, and the step-by-step execution timeline.
+
+### 4. Run Pipeline Smoke Tests (CLI)
+
+```bash
+python scripts/test_pipeline.py
+```
 
 ## Future Work
 
-- **Streamlit Live Dashboard**: Develop a real-time web interface for interactive threat analysis.
 - **AMD MI300X Deployment**: Fully scale the vLLM integration on AMD MI300X infrastructure for enterprise-grade throughput.
 - **WhatsApp Bot Integration**: Directly parse user-forwarded messages for instant fraud scoring.

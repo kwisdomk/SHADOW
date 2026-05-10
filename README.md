@@ -85,34 +85,64 @@ Shadow solves the "Data Cold Start" problem by employing a hybrid architecture: 
 ## Quick Start
 
 ```bash
+# 1. Create and activate a virtual environment
+python -m venv venv
+.\venv\Scripts\activate      # Windows
+# source venv/bin/activate   # macOS/Linux
+
+# 2. Install dependencies
 pip install -r requirements.txt
-streamlit run app/main.py
+
+# 3. Launch the dashboard
+streamlit run app.py
 ```
 
 ## How to Run
 
-### 1. Install Dependencies
+### 1. Create a Virtual Environment
+
+It is strongly recommended to isolate project dependencies in a virtual environment.
+
+**Windows (PowerShell):**
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+**macOS / Linux:**
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+You should see `(venv)` prepended to your terminal prompt, confirming the environment is active.
+
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configure Environment
+### 3. Configure Environment
 
 ```bash
 # Copy the example environment file and add your AMD Cloud API key (optional — mock mode works without it)
-cp .env.example .env
+# Windows:
+copy .env.example .env
+
+# macOS/Linux:
+# cp .env.example .env
 ```
 
-### 3. Launch the Streamlit Dashboard (Primary Interface)
+### 4. Launch the Streamlit Dashboard (Primary Interface)
 
 ```bash
-streamlit run app/main.py
+streamlit run app.py
 ```
 
 The dashboard runs at `http://localhost:8501` and provides a full interactive UI for submitting messages, viewing risk scores, agent reasoning, and the step-by-step execution timeline.
 
-### 4. Run Pipeline Smoke Tests (CLI)
+### 5. Run Pipeline Smoke Tests (CLI)
 
 ```bash
 python scripts/test_pipeline.py

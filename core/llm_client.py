@@ -163,13 +163,13 @@ class ShadowLLMClient:
             risk = risk_mapping.get(osint_risk, "HIGH RISK")
 
         # Route to appropriate mock based on the agent's system prompt signature
-        if "Language Intelligence Agent" in system_prompt:
+        if "You are the Language Intelligence Agent" in system_prompt:
             return self._mock_language_agent(risk)
-        elif "Threat Pattern Agent" in system_prompt:
+        elif "You are the Threat Pattern Agent" in system_prompt:
             return self._mock_threat_pattern_agent(risk)
-        elif "Risk Scoring Agent" in system_prompt:
+        elif "You are the Risk Scoring Agent" in system_prompt:
             return self._mock_risk_scoring_agent(risk)
-        elif "Action Agent" in system_prompt:
+        elif "You are the Action Agent" in system_prompt:
             return self._mock_action_agent(risk)
         else:
             # Generic fallback
